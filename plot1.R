@@ -1,0 +1,8 @@
+library(dplyr)
+class <- c("character","character","numeric","numeric","numeric","numeric","numeric","numeric","numeric")
+data <- read.csv("household_power_consumption.txt", sep = ";", skip = 60000, nrows = 10000, header=FALSE, na.strings = "?", colClasses = class)
+datadaytime <- mutate(data, daytime = gsub(" ART", "", strptime(paste(data[,1],data[,2], sep=":"), "%d/%m/%Y:%H:%M:%S")))
+subdata <- subset(datadaytime, format(as.Date(datadaytime[, 10]), "%Y-%m-%d") == "2007-02-01" | format(as.Date(datadaytime[, 10]), "%Y-%m-%d") == "2007-02-02")
+png("plot1.png", width = 480, height = 480, units = "px")
+hist(subdata$V3, col = "red", main ="Global Active Power", xlab = "Global Active Power (kilowatts)")
+dev.off()
