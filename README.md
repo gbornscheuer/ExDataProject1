@@ -28,5 +28,7 @@ The dataset to produce the images is in:
 	 
 The filename is: household_power_consumption.txt (126 MB)
 This file should be in the working directory of R in order to execute the scrips correctly.
+
 I'm running R version 3.2.2 (2015-08-14) -- "Fire Safety" in windows XP
+
 dplyr package must be loaded
